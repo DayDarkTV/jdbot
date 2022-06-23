@@ -8,6 +8,7 @@ a bot by day, for jd~!
 - [ ] possible negative outcome?
 - [x] possible *so close* effect?
 	- currently, if you roll numbers 1 apart, you can roll again :>
+- [ ] show time left for command cooldown
 
 
 ## howto:
