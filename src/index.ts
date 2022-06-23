@@ -21,7 +21,7 @@ function onMessage(msg:Discord.Message) {
     let text = msg.content.trim()
     let channel = msg.channel as Discord.GuildChannel
     if (msg.author.tag === 'jdbot#9588') return
-    console.log(`> new message sent by ${msg.author.tag} in channel ${channel.name} in server ${msg.guild?.name}`)
+    console.log(`> new message sent by ${msg.author.tag} in channel #${channel.name} in server ${msg.guild?.name}`)
     console.log(`> '${text}'`)
     if (text.startsWith('jd.lifeRoll')) {
         if (!db.exists(`/liferoll/${msg.author.id}`)) db.push(`/liferoll/${msg.author.id}`, {time:0})
