@@ -15,6 +15,7 @@ var auth = fs.readFile('../auth.json','utf8', (err, data) => {
 
 function onReady () {
     console.log(`> welcome\n> bot user ${Client.user?.tag} is online~`)
+    Client.user?.setPresence({activities: [{ name: 'github.com/DayDarkTV/jdbot'}], status:'online'})
 }
 function onMessage(msg:Discord.Message) {
     let text = msg.content.trim()
