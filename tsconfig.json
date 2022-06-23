@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "es2022",
+        "strict": true,
+        "outDir": "./built",
+        "module": "commonjs"
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "**/*.spec.ts"]
+}
