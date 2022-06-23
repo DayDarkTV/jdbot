@@ -11,10 +11,10 @@ a bot by day, for jd~!
 
 
 ## howto:
-uses: node & npm
+uses: node & npm\n
 https://nodejs.org/en/download/
 1. run `npm i`
-2. run `tsc`
+2. run `tsc`\n
 everything should be generated :D
 3. login to discord on your browser and go to https://discord.com/developers/applications and create a new app
 4. go to bot settings and creat a new bot
