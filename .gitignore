@@ -1,2 +1,4 @@
 /data.json
 /.obsidian/**
+/built/**
+/node_modules/**/*
