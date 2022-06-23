@@ -5,7 +5,7 @@ a bot by day, for jd~!
 - [x] base discord bot
 - [x] basic random reward system :>
 	- [ ] make it a reasonable probability .\_.
-- [ ] possible negative effect?
+- [ ] possible negative outcome?
 - [x] possible *so close* effect?
 	- currently, if you roll numbers 1 apart, you can roll again :>
 
