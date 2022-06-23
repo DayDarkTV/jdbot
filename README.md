@@ -8,3 +8,13 @@ a bot by day, for jd~!
 - [ ] possible negative effect?
 - [x] possible *so close* effect?
 	- currently, if you roll numbers 1 apart, you can roll again :>
+
+
+## howto:
+1. run `npm i`
+2. run `tsc`
+everything should be generated :D
+3. go to https://discord.com/developers/applications and create a new app
+4. go to bot settings and creat a new bot
+5. move file 'auth.json' outside directory and replace `TOKEN_HERE` with bot token
+6. to start, run `node ./built/index.js`
