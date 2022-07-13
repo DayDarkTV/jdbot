@@ -3,6 +3,8 @@ import * as fs from 'fs'
 import * as crypto from 'crypto'
 import { JsonDB } from 'node-json-db'
 import { Config } from 'node-json-db/dist/lib/JsonDBConfig'
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
 
 const db = new JsonDB('./data', true, true, '/')
 if (!db.exists('/liferoll')) db.push('/liferoll',{})
@@ -47,11 +49,15 @@ function onMessage(msg:Discord.Message) {
                 .setFooter({ text: username, iconURL: `${Client.user?.avatarURL({dynamic:true})??'https://cdn.discordapp.com/avatars/737365428078116955/d44b735761a65696f8ab108c5e25237d.webp'}` })
             msg.channel.send({embeds:[embed]})
         } else {
+            TimeAgo.addDefaultLocale(en)
+            const timeAgo = new TimeAgo('en-us')
+            const lastuse = db.getObject<number>(`/liferoll/${msg.author.id}/time`)
+            const timeTil = timeAgo.format(lastuse)
             let username = Client.user?.tag ?? 'jdbot'
             const embed = new Discord.MessageEmbed()
                 .setAuthor({ name: msg.author.tag, iconURL: `${msg.author.avatarURL({dynamic:true})}`})
                 .setTitle(`not yet~!`)
-                .setDescription(`cannot use this command yet~ (24hr cooldown)`)
+                .setDescription(`cannot use this command yet~ (24hr cooldown)\nLast use was at ${timeTil}`)
                 .setFooter({ text: username, iconURL: `${Client.user?.avatarURL({dynamic:true})??'https://cdn.discordapp.com/avatars/737365428078116955/d44b735761a65696f8ab108c5e25237d.webp'}` })
             msg.channel.send({embeds: [embed]})
         }
