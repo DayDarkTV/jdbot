@@ -29,21 +29,21 @@ function onMessage(msg:Discord.Message) {
         let daytime = 1000 * 60 * 60 * 24
         if ((db.getObject<number>(`/liferoll/${msg.author.id}/time`)) <= (Date.now() - daytime)){
             let username = Client.user?.tag ?? 'jdbot'
-            let _temp1 = random(1, 50)
+            let _temp1 = random(1, 25)
             if (typeof _temp1 === 'boolean') _temp1 = 0
-            let _temp2 = random(1, 50)
+            let _temp2 = random(1, 25)
             if (typeof _temp2 === 'boolean') _temp2 = 0
             const num1 = Math.round(_temp1)
             const num2 = Math.round(_temp2)
             const win = (num1 === num2)
-            const soclose = ((num1-num2) === (-1 | 1))
+            const soclose = (Math.abs(num1-num2) == 1)
             console.log(`> user ${msg.member?.user.tag} has taken their chance!`)
             console.log(`> they ${win?'won':'lost'} with numbers ${num1} and ${num2}${win?'!':''}~`)
             if (!soclose) db.push(`/liferoll/${msg.author.id}/time`, Date.now())
             const embed = new Discord.MessageEmbed()
                 .setAuthor({ name: msg.author.tag, iconURL: `${msg.author.avatarURL({dynamic:true})}`})
                 .setTitle(`your rolls...`)
-                .setDescription(`you ${win?'won':'lost'}! \nyour rolls were ${num1} and ${num2}${win?'!':''}~ \n${win?`contact <@> or <@737365428078116955> for your life~!`:`${soclose?'your numbers were so close that you get a second try :> the command should let you try again :D':''}`}`)
+                .setDescription(`you ${win?'won':'lost'}! \nyour rolls were ${num1} and ${num2}${win?'!':''}~ \n${win?`contact <@390968992417972254> or <@737365428078116955> for your life~!`:`${soclose?'your numbers were so close that you get a second try :> the command should let you try again :D':''}`}`)
                 .setFooter({ text: username, iconURL: `${Client.user?.avatarURL({dynamic:true})??'https://cdn.discordapp.com/avatars/737365428078116955/d44b735761a65696f8ab108c5e25237d.webp'}` })
             msg.channel.send({embeds:[embed]})
         } else {
@@ -59,7 +59,7 @@ function onMessage(msg:Discord.Message) {
 }
 
 Client.on('ready', onReady)
-Client.on('messageCreate', (msg) => {onMessage(msg)})
+Client.on('messageCreate', (msg: Discord.Message) => {onMessage(msg)})
 
 
 function random(minimum:number, maximum:number){
